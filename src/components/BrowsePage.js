@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import Search from './components/Search'
-import Browse from './components/Browse'
-import Header from '../../src/components/Header'
+import './BrowsePage.css';
+import Search from './Search'
+import Browse from './Browse'
 import React, { useState } from 'react';
 
-function App() {
+function BrowsePage() {
   const [search, setSearch] = useState({type: '', name: ''})
 
   function changeSearch(key, value){
@@ -14,11 +12,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <Search search={search} change={changeSearch} />
       <Browse search={search} />
     </div>
   );
 }
 
-export default App;
+export default BrowsePage;
