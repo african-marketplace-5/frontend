@@ -9,6 +9,7 @@ function Search (props) {
     }
 
     return (
+      <div className='search'>
         <div className='search-bar'>
             <select
                 name='type'
@@ -28,6 +29,7 @@ function Search (props) {
                 placeholder='Item Name' 
             />
         </div>
+      </div>
     )
 }
 

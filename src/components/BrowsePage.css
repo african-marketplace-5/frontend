@@ -1,21 +1,39 @@
+.search{
+  background: #E3E7AF;
+}
+
 .search-bar{
   text-align: center;
   padding: 2%;
+  width: 40%;
+  margin: 0 29.5%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .items-list {
-  display: flex
+  display: flex;
+  background: #B48B7D;
 }
 
 .item-card{
   width: 20%;
   margin: 2%;
+  padding: 1%;
   text-align: center;
+  background: #C6DAE6;
+  font-weight: bold;
+  color: #37123C;
 }
 
-.search-bar{
-  width: 40%;
-  margin: 0 29.5%;
-  display: flex;
-  justify-content: space-between;
+.item-card p{
+  margin: 2% 0;
+}
+
+h2{
+  font-size: 1.5rem;
+}
+
+h3{
+  font-size: 1.2rem;
 }
