@@ -6,13 +6,13 @@ import React, { useState, useEffect } from 'react';
 function BrowsePage() {
   const [search, setSearch] = useState({type: '', name: ''})
   const [items, setItems] = useState([])
-  const [selectedItems, setSelectedItems] = useState([])
+  const [selectedItems, setSelectedItems] = useState(items)
 
 // Temporary items list
     useEffect(() =>{
     setItems([
         {
-            name: 'potatos',
+            name: 'potatoes',
             type: 'vegetable',
             price: '2$/lb',
             owner: 'romy',
@@ -27,9 +27,8 @@ function BrowsePage() {
             location: 'Kenya',
             description: 'locally grown blackberries'
         }
-    ])
-}, [])
-
+    ]);
+    }, [])
 
   function changeSearch(key, value){
     setSearch({...search, [key]: value})
@@ -40,7 +39,7 @@ function BrowsePage() {
     if (type === ''){
         setSelectedItems(select)
     }else{
-        setSelectedItems(select.filter(item => item.name.includes(name)))
+        setSelectedItems(select.filter(item => item.type === type))
     }
   }
 
@@ -50,7 +49,7 @@ function BrowsePage() {
   }, [search])
 
   return (
-    <div className="App">
+    <div className="browse">
       <Search search={search} change={changeSearch} />
       <Browse selected={selectedItems} />
     </div>

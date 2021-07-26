@@ -8,7 +8,7 @@ function Browse (props) {
             {selected.map(item => {
                 const { name, type, price, owner, location, description } = item
                 return (
-                    <div className='item'>
+                    <div className='item-card'>
                         <h2>{name}, {type}</h2>
                         <h3>{price}</h3>
                         <p>Owned by {owner} in {location}</p>

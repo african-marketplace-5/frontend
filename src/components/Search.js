@@ -10,7 +10,6 @@ function Search (props) {
 
     return (
         <div className='search-bar'>
-            <label htmlFor='type'>Type:</label>
             <select
                 name='type'
                 id='type'
@@ -18,6 +17,8 @@ function Search (props) {
                 onChange={changeSearch}
             >
                 <option value=''>--Select a Product Type--</option>
+                <option value='vegetable'>Vegetable</option>
+                <option value='fruit'>Fruit</option>
             </select>
             <input
                 type='text' 
