@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledLogin = styled.div`
-height: 50vh;
+height: 40.5vh;
 display:flex;
 flex-flow:column;
 align-items:center;
@@ -50,7 +50,7 @@ const initialLoginFormValues = {
 export default function Login(props) {
     //use userLogin function to change global user id state
     const { userLogin } = props;
-    
+
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
     const updateLoginForm = (inputName, inputValue) => {
