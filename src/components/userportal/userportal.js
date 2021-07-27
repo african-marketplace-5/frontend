@@ -18,7 +18,6 @@ const initialUserFormValues = {
     tos: false,
 };
 const initialUserFormErrors = {
-    id: '',
     first_name: '',
     last_name:'',
     email: '',

@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import userFormSchema from './validation/userFormSchema';
 import { reach } from 'yup';
+import { useHistory } from 'react-router-dom'
 
 //Signup styles
 const StyledSignup = styled.div`
@@ -100,10 +101,13 @@ export default function Signup() {
 
     //SIGNUP FORM
         // Submit new user information and post new user to API, USED TEST API
-        const postNewUser = newUser => {
+            const history = useHistory();
+            const postNewUser = newUser => {
             axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register', newUser)
+            //Used a push to history instead of a route 
             .then(res => {
                 console.log(res.data);
+                history.push('/login');
             })
             .catch(err => {
                 console.log(err);

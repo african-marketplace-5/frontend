@@ -47,7 +47,10 @@ const initialLoginFormValues = {
     password: '',
 };
 
-export default function Login() {
+export default function Login(props) {
+    //use userLogin function to change global user id state
+    const { userLogin } = props;
+    
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
     const updateLoginForm = (inputName, inputValue) => {
@@ -60,8 +63,9 @@ export default function Login() {
     };
 
     //placeholder for authorization
-    const onSubmit = () => {
-        console.log(loginFormValues)
+    const onSubmit = evt => {
+        evt.preventDefault();
+        console.log(loginFormValues);
     };
     return (
         <>
