@@ -53,14 +53,11 @@ export default function Login(props) {
 
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
-    const updateLoginForm = (inputName, inputValue) => {
-        setLoginFormValues({ ...loginFormValues, [inputName]: inputValue});
-    };
-    const onChange = evt => {
-        const { name, value, type, checked } = evt.target;
-        const valueToUse = type === 'checkbox' ? checked : value
-        updateLoginForm(name, valueToUse);
-    };
+    const handleChange = evt => {
+      const { name, value } = evt.target;
+
+      setLoginFormValues({ ...loginFormValues, [name]:value })
+    }
 
     //placeholder for authorization
     const onSubmit = evt => {
@@ -71,28 +68,36 @@ export default function Login(props) {
         <>
             <StyledLogin>
                 <form className='form-container' onSubmit={onSubmit}>
+
                     <h2>Login:</h2>
+
                     <div className='form-inputs'>
                         <label htmlFor='username'>First name: 
                             <input 
-                            id='username'
-                            type='text'
-                            name='username'
-                            onChange={onChange}
-                            value={loginFormValues.username}/>
+                              id='username'
+                              type='text'
+                              name='username'
+                              onChange={handleChange}
+                              value={loginFormValues.username}
+                            />
                         </label>
+
                         <label htmlFor='password'> Password: 
                             <input 
-                            id='password'
-                            type='password'
-                            name='password'
-                            onChange={onChange}
-                            value={loginFormValues.password}/>
+                              id='password'
+                              type='password'
+                              name='password'
+                              onChange={handleChange}
+                              value={loginFormValues.password}
+                            />
                         </label>
+
                     </div>
+
                     <div className='submit'>
-                    <button>Submit</button>
+                      <button>Submit</button>
                     </div>
+
                 </form>  
             </StyledLogin>
         </>

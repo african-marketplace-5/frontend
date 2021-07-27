@@ -187,7 +187,7 @@ export default function Signup() {
                     <option value=''>--</option>
                     {location.map(elem => {
                         return(
-                            <option value={elem.location_name}>{elem.location_name}</option>
+                            <option key={elem.location_name} value={elem.location_name}>{elem.location_name}</option>
                         )  
                     })}
                     </select>
