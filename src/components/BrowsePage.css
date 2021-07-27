@@ -5,8 +5,8 @@
 .search-bar{
   text-align: center;
   padding: 2%;
-  width: 40%;
-  margin: 0 29.5%;
+  width: 60%;
+  margin: 0 19.5%;
   display: flex;
   justify-content: space-between;
 }

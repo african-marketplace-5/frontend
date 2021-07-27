@@ -87,9 +87,9 @@ function Search (props) {
                 <option value = 'vegetables'>Vegetables</option>
             </select>
             <select
-                name='subtype'
-                id='subtype'
-                value={search.subtype}
+                name='subType'
+                id='subType'
+                value={search.subType}
                 onChange={changeSearch}
             >
                 <option value=''>--Select a Product SubType--</option>

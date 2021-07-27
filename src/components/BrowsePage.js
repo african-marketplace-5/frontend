@@ -36,18 +36,24 @@ function BrowsePage() {
     setSearch({...search, [key]: value})
   }
 
-  function selection (type, name){
+  function selection (type, subType, name){
+    console.log(search)
     const select = items.filter(item => item.name.includes(name))
-    if (type === ''){
+    if (type === '' && subType === ''){
         setSelectedItems(select)
-    }else{
+    }else if (subType === ''){
         setSelectedItems(select.filter(item => item.type === type))
+    }else if (type === ''){
+      setSelectedItems(select.filter(item => item.subType === subType))
+    }else{
+      const select2 = select.filter(item => item.type === type)
+      setSelectedItems(select2.filter(item => item.subType === subType))
     }
   }
 
   useEffect(() => {
-    const { type, name } = search
-    selection(type, name)
+    const { type, subType, name } = search
+    selection(type, subType, name)
   }, [search])
 
   return (
