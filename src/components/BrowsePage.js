@@ -22,7 +22,7 @@ function BrowsePage() {
 
   function selection (category, item_name){
     console.log(search)
-    const select = items.filter(item => item.item_name.includes(item_name))
+    const select = items.filter(item => item.item_name.toLowerCase().includes(item_name.toLowerCase()))
     if (category === ''){
         setSelectedItems(select)
     }else{
