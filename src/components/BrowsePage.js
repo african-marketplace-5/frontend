@@ -4,7 +4,7 @@ import Browse from './Browse'
 import React, { useState, useEffect } from 'react';
 
 function BrowsePage() {
-  const [search, setSearch] = useState({type: '', name: ''})
+  const [search, setSearch] = useState({type: '', subtype: '', name: ''})
   const [items, setItems] = useState([])
   const [selectedItems, setSelectedItems] = useState(items)
 
@@ -13,7 +13,8 @@ function BrowsePage() {
     setItems([
         {
             name: 'potatoes',
-            type: 'vegetable',
+            type: 'rootsAndTubers',
+            subType: 'potatoes',
             price: '2$/lb',
             owner: 'romy',
             location: 'Kenya',
@@ -21,7 +22,8 @@ function BrowsePage() {
         },
         {
             name: 'blackberries',
-            type: 'fruit',
+            type: 'fruits',
+            subType: "other",
             price: '4$/pint',
             owner: 'romy',
             location: 'Kenya',
