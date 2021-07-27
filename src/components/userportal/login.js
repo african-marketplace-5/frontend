@@ -19,7 +19,7 @@ form {
     flex-flow:column;
     width:80%;
     border: inset 5px #228B22;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 2%;
 }
 
