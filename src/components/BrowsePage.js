@@ -2,58 +2,37 @@ import './BrowsePage.css';
 import Search from './Search'
 import Browse from './Browse'
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 function BrowsePage() {
-  const [search, setSearch] = useState({type: '', subtype: '', name: ''})
+  const [search, setSearch] = useState({category: '', item_name: ''})
   const [items, setItems] = useState([])
   const [selectedItems, setSelectedItems] = useState(items)
 
 // Temporary items list
-    useEffect(() =>{
-    setItems([
-        {
-            name: 'potatoes',
-            type: 'rootsAndTubers',
-            subType: 'potatoes',
-            price: '2$/lb',
-            owner: 'romy',
-            location: 'Kenya',
-            description: 'locally grown potatoes'
-        },
-        {
-            name: 'blackberries',
-            type: 'fruits',
-            subType: "other",
-            price: '4$/pint',
-            owner: 'romy',
-            location: 'Kenya',
-            description: 'locally grown blackberries'
-        }
-    ]);
-    }, [])
+  useEffect(() =>{
+    axios.get('https://african-marketplace-5.herokuapp.com/api/items/')
+      .then(res => setItems(res.data))
+      .catch(err => console.log(err))
+  }, [])
 
   function changeSearch(key, value){
     setSearch({...search, [key]: value})
   }
 
-  function selection (type, subType, name){
+  function selection (category, item_name){
     console.log(search)
-    const select = items.filter(item => item.name.includes(name))
-    if (type === '' && subType === ''){
+    const select = items.filter(item => item.item_name.includes(item_name))
+    if (category === ''){
         setSelectedItems(select)
-    }else if (subType === ''){
-        setSelectedItems(select.filter(item => item.type === type))
-    }else if (type === ''){
-      setSelectedItems(select.filter(item => item.subType === subType))
     }else{
-      const select2 = select.filter(item => item.type === type)
-      setSelectedItems(select2.filter(item => item.subType === subType))
+        setSelectedItems(select.filter(item => item.category === category))
     }
   }
 
   useEffect(() => {
-    const { type, subType, name } = search
-    selection(type, subType, name)
+    const {category, item_name } = search
+    selection(category, item_name)
   }, [search])
 
   return (
