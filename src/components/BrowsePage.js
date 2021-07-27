@@ -12,7 +12,8 @@ function BrowsePage() {
 // Temporary items list
   useEffect(() =>{
     axios.get('https://african-marketplace-5.herokuapp.com/api/items/')
-      .then(res => setItems(res.data))
+      .then(res => {setItems(res.data);
+        console.log(res.data)})
       .catch(err => console.log(err))
   }, [])
 
@@ -21,7 +22,6 @@ function BrowsePage() {
   }
 
   function selection (category, item_name){
-    console.log(search)
     const select = items.filter(item => item.item_name.toLowerCase().includes(item_name.toLowerCase()))
     if (category === ''){
         setSelectedItems(select)

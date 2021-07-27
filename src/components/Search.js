@@ -27,7 +27,7 @@ function Search (props) {
             >
                 <option value=''>--Select a Product Category--</option>
                 {itemTypes.map(type => {return (
-                    <option value={type.category}>{type.category}</option>
+                    <option value={type.category} key={type.category}>{type.category}</option>
                 )})}
             </select>
             <input
