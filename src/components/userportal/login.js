@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios'
 
 const StyledLogin = styled.div`
 height: 40.5vh;
@@ -60,14 +61,25 @@ export default function Login(props) {
     }
 
     //placeholder for authorization
-    const onSubmit = evt => {
+    const handleSubmit = evt => {
         evt.preventDefault();
+
         console.log(loginFormValues);
+
+        axios
+          .post('https://african-marketplace-5.herokuapp.com/api/auth/login', loginFormValues)
+          .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.token)
+          })
+          .catch(err => {
+            console.log(err)
+          })
     };
     return (
         <>
             <StyledLogin>
-                <form className='form-container' onSubmit={onSubmit}>
+                <form className='form-container' onSubmit={handleSubmit}>
 
                     <h2>Login:</h2>
 
