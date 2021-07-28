@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
 import { Route, Switch } from "react-router-dom";
-import Header from './components/Header';
-import Home from './components/Home';
+import Header from './components/Header'
+import Home from './components/Home'
+import BrowsePage from './components/BrowsePage'
 import Signup from './components/userportal/signup';
 import Login from './components/userportal/login';
 
@@ -31,7 +32,12 @@ function App() {
           <Login userLogin={userLogin}/>
         </Route>
 
-      </Switch>
+      {/*Romy's browse page */}
+      <Route exact path='/browse'>
+        <BrowsePage />
+      </Route>
+
+    </Switch>
     </>
   );
 };
