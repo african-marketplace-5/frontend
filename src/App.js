@@ -6,14 +6,14 @@ import Home from './components/Home';
 import Signup from './components/userportal/signup';
 import Login from './components/userportal/login';
 
-const initialUserId = 'guest'
+const initialUserId = null;
 
 function App() {
   const [ userId, setUserId ] = useState(initialUserId);
 
   const userLogin = (id) => {
     setUserId(id)
-  }
+  };
   
   return (
     <>

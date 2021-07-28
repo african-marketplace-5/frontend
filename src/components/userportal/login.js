@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const StyledLogin = styled.div`
 height: 40.5vh;
@@ -41,6 +43,16 @@ label{
 input, select {
     margin-left: 1%;
 }
+.error {
+    color:red;
+    height:0vh;
+    overflow:hidden;
+}
+.error.show{
+    height:auto;
+    overflow: visible;
+}
+
 `
 const initialLoginFormValues = {
     username: '',
@@ -61,12 +73,37 @@ export default function Login(props) {
         const valueToUse = type === 'checkbox' ? checked : value
         updateLoginForm(name, valueToUse);
     };
+    //Authorization post and form submission
+    const history = useHistory();
+    
+    const loginFail = document.getElementById('error');
+    const loginUser = userKey => {
+    axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register/', userKey )
+    .then(res => {
+        console.log(res.data);
+        userLogin();
+        history.push('/account');
+    })
+    .catch(err => {
+        console.log(err.stack);
+        setLoginFormValues(initialLoginFormValues)
+        loginFail.classList.add('show');
+    })
+    };
+    const submitLoginForm = () => {
+    const userKey = {
+        username: loginFormValues.username,
+        password: loginFormValues.password,
+    };
+    // console.log(newUser);
+    loginUser(userKey);
+    };
 
-    //placeholder for authorization
     const onSubmit = evt => {
         evt.preventDefault();
-        console.log(loginFormValues);
+        submitLoginForm();
     };
+
     return (
         <>
             <StyledLogin>
@@ -93,7 +130,8 @@ export default function Login(props) {
                     <div className='submit'>
                     <button>Submit</button>
                     </div>
-                </form>  
+                    <div className='error'>Username or password is incorrect.</div>
+                </form> 
             </StyledLogin>
         </>
     );

@@ -11,7 +11,7 @@ function Header() {
         <StyledNav>
           <Link to='/account'>Account</Link>
           <Link to='/login'>Login</Link>
-          <Link to='/signup'>join</Link>
+          <Link to='/signup'>Join</Link>
         </StyledNav>
         
       </StyledHeader>
