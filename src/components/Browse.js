@@ -14,15 +14,11 @@ function Browse (props) {
         }
         if (range[0] === range[1]){
             return (
-                <>
                 <p>Price: {range[0]}</p>
-                </>
             )
         }else{
             return (
-                <>
                 <p>Price: {range[0]}-{range[1]}</p>
-                </>
             )
         }
     }
