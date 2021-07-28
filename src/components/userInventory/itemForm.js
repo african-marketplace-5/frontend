@@ -23,7 +23,7 @@ const itemForm = (props) => {
                     />
                 </label>
                 <label htmlFor = 'category'>Category
-                    <select id = 'category' name = 'category' onChange = {onChange} value = {values.category}>
+                    <select id = 'category' name = 'category' onChange = {onChange} value = {values.category_id}>
                         <option value = ''>--Select Category--</option>
                         <option value = 'animal_products'>Animal Products</option>
                         <option value = 'beans'>Beans</option>

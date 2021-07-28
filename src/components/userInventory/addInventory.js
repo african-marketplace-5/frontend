@@ -11,7 +11,7 @@ const initialFormValues = {
 }
 
 const addItem = () => {
-    const [items, setItem]
+    const [items, setItem] = useState
     const [formValues, setFormValues] = useState(initialFormValues)
     const updateForm = (inputItem, inputValue) => {
         setFormValues({ ...formValues, [inputItem]: inputValue})
