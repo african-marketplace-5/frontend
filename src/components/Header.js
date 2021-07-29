@@ -23,15 +23,17 @@ const Header = props => {
     localStorage.removeItem('token')
     setLoggedIn(false)
     push("/");
+    checkUserStatus()
   }
 
 
   return (
     <>
       <StyledHeader>
-        <Link to='/' className='logo'><h2>Marketplace<FaGlobeAfrica color="green" size="2rem" /></h2></Link>
-
-
+        <div id="logo-container">
+          <Link to='/' className='logo'><h2>Marketplace</h2></Link>
+          <FaGlobeAfrica color="green" size="2.5rem" />
+        </div>
 
         <StyledNav>
           <Link to='/browse'>Browse</Link>
@@ -54,7 +56,13 @@ align-items: center;
 justify-content: space-between;
 
 .logo h2 {
-  font-size: 33px;
+  font-size: 36px;
+  margin-right: 5px;
+}
+
+#logo-container {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
