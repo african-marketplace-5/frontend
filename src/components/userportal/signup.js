@@ -106,7 +106,6 @@ export default function Signup() {
             axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register', newUser)
             //Used a push to history instead of a route 
             .then(res => {
-                console.log(res.data);
                 history.push('/login');
             })
             .catch(err => {
@@ -192,7 +191,7 @@ export default function Signup() {
                     })}
                     </select>
                     </label>
-                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>:
+                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>: {/* eslint-disable-line */}
                                 <input 
                                 id='tos'
                                 type='checkbox'
