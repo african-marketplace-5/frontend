@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 const StyledLogin = styled.div`
 height: 40.5vh;
@@ -49,6 +50,7 @@ const initialLoginFormValues = {
 };
 
 export default function Login(props) {
+    const { push } = useHistory();
     //use userLogin function to change global user id state
     const { userLogin, login} = props;
 
@@ -72,6 +74,8 @@ export default function Login(props) {
             console.log(res)
             localStorage.setItem('token', res.data.token)
             login()
+            push('/account')
+            
           })
           .catch(err => {
             console.log(err)
