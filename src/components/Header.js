@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom'
 
 const Header = props => {
-  const { loggedIn } = props;
+  const { loggedIn, setLoggedIn } = props;
 
   const checkUserStatus = () => {
     if(localStorage.getItem("token")) {
@@ -18,6 +18,11 @@ const Header = props => {
     checkUserStatus()
   }, [loggedIn])
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    setLoggedIn(false)
+  }
+
 
   return (
     <>
@@ -27,6 +32,7 @@ const Header = props => {
         <StyledNav>
           <Link to='/browse'>Browse</Link>
           {checkUserStatus()}
+          <Link onClick={() => handleLogout()}>Logout</Link>
           <Link to='/signup'>Signup</Link>
         </StyledNav>
         
