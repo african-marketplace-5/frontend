@@ -7,10 +7,8 @@ import BrowsePage from './components/BrowsePage'
 import Signup from './components/userportal/Signup';
 import Login from './components/userportal/Login';
 
-const initialUserId = 'guest'
-
 function App() {
-  const [ userId, setUserId ] = useState(initialUserId);
+  const [ userId, setUserId ] = useState("guest");
   const [loggedIn, setLoggedIn] = useState(false);
 
   const login = () => {
