@@ -21,6 +21,8 @@
 .photoBy p{
   color: lightgreen;
   background: black;
+  text-align: right;
+  padding: 1%
 }
 
 .photoBy p a{
