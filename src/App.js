@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Header from './components/Header'
 import Home from './components/Home'
@@ -11,6 +11,11 @@ const initialUserId = 'guest'
 
 function App() {
   const [ userId, setUserId ] = useState(initialUserId);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const login = () => {
+    setLoggedIn(true);
+  }
 
   const userLogin = (id) => {
     setUserId(id)
@@ -18,18 +23,20 @@ function App() {
   
   return (
     <>
-      <Header />
+      <Header loggedIn={loggedIn} />
 
       <Switch>
       
         <Route exact path="/">
           <Home />
         </Route>
+
         <Route path='/signup' component={Signup}>
           <Signup/>
         </Route>
+
         <Route path='/login' component={Login}>
-          <Login userLogin={userLogin}/>
+          <Login login={login} userLogin={userLogin}/>
         </Route>
 
       {/*Romy's browse page */}

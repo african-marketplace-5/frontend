@@ -50,7 +50,7 @@ const initialLoginFormValues = {
 
 export default function Login(props) {
     //use userLogin function to change global user id state
-    const { userLogin } = props;
+    const { userLogin, login} = props;
 
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
@@ -71,6 +71,7 @@ export default function Login(props) {
           .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
+            login()
           })
           .catch(err => {
             console.log(err)

@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
 
-function Header() {
+const Header = props => {
+  const { loggedIn } = props;
+
+  const checkUserStatus = () => {
+    if(localStorage.getItem("token")) {
+      return <Link to="/account">Account</Link>
+    }
+    else {
+      return <Link to="/login">Login</Link>
+    }
+  }
+
+  useEffect(() => {
+    checkUserStatus()
+  }, [loggedIn])
+
+
   return (
     <>
       <StyledHeader>
@@ -10,8 +26,7 @@ function Header() {
 
         <StyledNav>
           <Link to='/browse'>Browse</Link>
-          <Link to='/account'>Account</Link>
-          <Link to='/login'>Login</Link>
+          {checkUserStatus()}
           <Link to='/signup'>Signup</Link>
         </StyledNav>
         
