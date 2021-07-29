@@ -21,8 +21,9 @@
 .photoBy p{
   color: lightgreen;
   background: black;
-  text-align: right;
-  padding: 1%
+  text-align: center;
+  padding: 1%;
+  margin-left: 70%;
 }
 
 .photoBy p a{
@@ -84,6 +85,10 @@ h3{
     width: 60%;
     margin: 0 19.5%;
   }
+
+  .photoBy p{
+    margin-left: 60%;
+  }
 }
 
 @media (max-width: 600px){
@@ -94,5 +99,9 @@ h3{
   .search-bar{
     width: 90%;
     margin: 0 4.5%;
+  }
+
+  .photoBy p{
+    margin-left: 50%;
   }
 }
