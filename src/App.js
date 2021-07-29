@@ -21,7 +21,7 @@ function App() {
   
   return (
     <>
-      <Header loggedIn={loggedIn} />
+      <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
 
       <Switch>
       
