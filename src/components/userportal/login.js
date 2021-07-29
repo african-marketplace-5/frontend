@@ -43,6 +43,16 @@ label{
 input, select {
     margin-left: 1%;
 }
+.error {
+    color:red;
+    height:0vh;
+    overflow:hidden;
+}
+.error.show{
+    height:auto;
+    overflow: visible;
+}
+
 `
 const initialLoginFormValues = {
     username: '',
@@ -78,6 +88,7 @@ export default function Login(props) {
             console.log(err)
           })
     };
+
     return (
         <>
             <StyledLogin>

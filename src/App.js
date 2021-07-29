@@ -18,7 +18,7 @@ function App() {
 
   const userLogin = (id) => {
     setUserId(id)
-  }
+  };
   
   return (
     <>
