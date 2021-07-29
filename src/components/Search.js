@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { FcSearch } from "react-icons/fc";
+
 
 function Search (props) {
     const [itemTypes, setItemTypes] = useState([])
@@ -30,13 +32,17 @@ function Search (props) {
                     <option value={type.category} key={type.category}>{type.category}</option>
                 )})}
             </select>
-            <input
-                type='text' 
-                value={search.item_name} 
-                onChange={changeSearch} 
-                name='item_name' 
-                placeholder='Item Name' 
-            />
+            <div id="search-container">
+                <FcSearch size="1.5rem" />
+                <input
+                    id="search"
+                    type='text' 
+                    value={search.item_name} 
+                    onChange={changeSearch} 
+                    name='item_name' 
+                    placeholder='Item Name' 
+                />
+            </div>
         </div>
       </div>
     )

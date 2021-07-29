@@ -9,6 +9,7 @@ function Header() {
         <Link to='/' className='logo'><h2>Marketplace</h2></Link>
 
         <StyledNav>
+          <Link to='/browse'>Browse</Link>
           <Link to='/account'>Account</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Signup</Link>
