@@ -191,7 +191,7 @@ export default function Signup() {
                     })}
                     </select>
                     </label>
-                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>:
+                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>: {/* eslint-disable-line */}
                                 <input 
                                 id='tos'
                                 type='checkbox'

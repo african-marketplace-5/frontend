@@ -16,7 +16,7 @@ const Header = props => {
 
   useEffect(() => {
     checkUserStatus()
-  }, [loggedIn])
+  }, [loggedIn]) // eslint-disable-line
 
   const handleLogout = () => {
     localStorage.removeItem('token')
