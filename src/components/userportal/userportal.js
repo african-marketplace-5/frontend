@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { reach } from 'yup';
 import userFormSchema from './validation/formSchema';
-import Login from './login'
-import Signup from './signup'
+import Login from './Login'
+import Signup from './Signup'
 import { Route, Switch } from 'react-router-dom'
 
 //Initial database of users
