@@ -5,12 +5,11 @@ import Item from './item'
 
 const initialFormValues = {
     user_item_description: '',
-    user_item_price: '',
-    item_name: '',
-    category_id: ''
+    user_item_price: 0,
 }
 
-const addItem = () => {
+const addItem = (props) => {
+    const {itemId, userId} = props
     const [items, setItem] = useState
     const [formValues, setFormValues] = useState(initialFormValues)
     const updateForm = (inputItem, inputValue) => {
@@ -20,16 +19,22 @@ const addItem = () => {
         const newItem = {
             user_item_description: formValues.user_item_description.trim(),
             user_item_price: formValues.user_item_price.trim(),
-            item_name: formValues.item_name.trim(),
-            category_id: formValues.category_id
+            item_id: itemId,
+            user_id: userId
         }
-        if (!newItem.user_item_description || !newItem.user_item_price) return
-        axios.post('https://african-marketplace-5.herokuapp.com/api/user_items/', newItem)
-            .then(res => {
-                const itemFromBackend = res.data
-                setItem([itemFromBackend, ...item])
-                setFormValues(initialFormValues)
-            })
+        if (!newItem.user_item_price || !itemId || !userId){
+          console.log('something went wrong')  
+        }else{
+            axios
+                .post('https://african-marketplace-5.herokuapp.com/api/user_items/', newItem)
+                .then(res => {
+                    const itemFromBackend = res.data
+                    setItem([itemFromBackend, ...items])
+                    setFormValues(initialFormValues)
+                })
+                .catch(err => console.log(err.message))
+        }
+        
     }
     useEffect(() => {
         axios.get('https://african-marketplace-5.herokuapp.com/api/user_items/').then(res => setItem(res.data))
