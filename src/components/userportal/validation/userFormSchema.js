@@ -12,8 +12,8 @@ const userformSchema = yup.object().shape({
     .min(6, 'Password must be at least 6 characters long')
     .max(16, 'Password cannot be longer than 16 characters'),
     location_id: yup
-    .string()
-    .trim(),
+    .number()
+    .nullable(true),
     tos: yup.boolean()
     .required('The Terms of Service must be accepted')
     .oneOf([true], 'The Terms of Service must be accepted')

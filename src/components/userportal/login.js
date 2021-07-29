@@ -43,6 +43,16 @@ label{
 input, select {
     margin-left: 1%;
 }
+.error {
+    color:red;
+    height:0vh;
+    overflow:hidden;
+}
+.error.show{
+    height:auto;
+    overflow: visible;
+}
+
 `
 const initialLoginFormValues = {
     username: '',
@@ -52,7 +62,7 @@ const initialLoginFormValues = {
 export default function Login(props) {
     const { push } = useHistory();
     //use userLogin function to change global user id state
-    const { userLogin, login} = props;
+    const { userLogin, login} = props; // eslint-disable-line
 
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
@@ -66,12 +76,9 @@ export default function Login(props) {
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        console.log(loginFormValues);
-
         axios
           .post('https://african-marketplace-5.herokuapp.com/api/auth/login', loginFormValues)
           .then(res => {
-            console.log(res)
             localStorage.setItem('token', res.data.token)
             login()
             push('/account')
@@ -81,6 +88,7 @@ export default function Login(props) {
             console.log(err)
           })
     };
+
     return (
         <>
             <StyledLogin>
