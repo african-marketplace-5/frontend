@@ -82,7 +82,6 @@ export default function Login(props) {
             localStorage.setItem('token', res.data.token)
             login()
             push('/account')
-            
           })
           .catch(err => {
             console.log(err)

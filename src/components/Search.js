@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { FcSearch } from "react-icons/fc";
+import { FaBalanceScale } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 
 function Search (props) {
@@ -20,6 +22,7 @@ function Search (props) {
 
     return (
       <div className='search'>
+
         <div className='search-bar'>
             <select
                 name='category'
@@ -32,6 +35,7 @@ function Search (props) {
                     <option value={type.category} key={type.category}>{type.category}</option>
                 )})}
             </select>
+
             <div id="search-container">
                 <FcSearch size="1.5rem" />
                 <input
@@ -42,6 +46,11 @@ function Search (props) {
                     name='item_name' 
                     placeholder='Item Name' 
                 />
+            </div>
+
+            <div id="sell-container">
+                <FaBalanceScale size="1.4rem" color="green"/>
+                <Link to='/add-item' id='sell-button'>Sell Item</Link>
             </div>
         </div>
       </div>

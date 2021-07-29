@@ -7,6 +7,7 @@ import Home from './components/Home'
 import BrowsePage from './components/BrowsePage'
 import Signup from './components/userportal/signup';
 import Login from './components/userportal/login';
+import ItemForm from "./components/userInventory/itemForm.js"
 
 function App() {
   const [ userId, setUserId ] = useState("guest");
@@ -37,11 +38,15 @@ function App() {
         <Route exact path='/browse'>
           <BrowsePage />
         </Route>
-      
-        <Route path="/">
+
+        <Route exact path="/">
           <Home />
         </Route>
 
+        <Route>
+          <ItemForm exact path='/add-item'/>
+        </Route>
+    
       </Switch>
     </>
   );

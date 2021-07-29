@@ -1,5 +1,6 @@
 .search{
   background: #e7dfaf;
+  /* border: solid red 4px; */
 }
 
 .search-bar{
@@ -9,6 +10,20 @@
   margin: 0 29.5%;
   display: flex;
   justify-content: space-between;
+  /* border: solid green 4px; */
+}
+
+#sell-button {
+  text-decoration: none;
+  background-color: white;
+  padding: 5px;
+  border: solid rgb(36, 36, 36) 1px;
+  margin-left: 5px;
+}
+
+#sell-container {
+  display: flex;
+  align-items: center;
 }
 
 .list-container{

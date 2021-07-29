@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from "styled-components";
 import { Link, useHistory } from 'react-router-dom';
+import { FaGlobeAfrica } from "react-icons/fa";
 
 const Header = props => {
   const { loggedIn, setLoggedIn } = props;
@@ -8,7 +9,7 @@ const Header = props => {
 
   const checkUserStatus = () => {
     if(localStorage.getItem("token")) {
-      return([<Link key="account" to="/account">Account</Link>,<Link key="logout" onClick={() => handleLogout()}>Logout</Link>])
+      return([<Link key="account" to="/account">Account</Link>,<Link key="logout" to="/" onClick={() => handleLogout()}>Logout</Link>])
     }
     else {
       return([<Link key="login" to="/login">Login</Link>,<Link key="signup" to='/signup'>Signup</Link>])
@@ -28,7 +29,9 @@ const Header = props => {
   return (
     <>
       <StyledHeader>
-        <Link to='/' className='logo'><h2>Marketplace</h2></Link>
+        <Link to='/' className='logo'><h2>Marketplace<FaGlobeAfrica color="green" size="2rem" /></h2></Link>
+
+
 
         <StyledNav>
           <Link to='/browse'>Browse</Link>
@@ -50,10 +53,13 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 
+.logo h2 {
+  font-size: 33px;
+}
+
 .logo {
   margin-left: 2%;
   font-family: 'Pacifico', cursive;
-  font-size: 30px;
   color: green;
   text-decoration: none;
 }
