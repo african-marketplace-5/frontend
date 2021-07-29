@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios'
+import { useHistory } from "react-router-dom";
 
 const StyledLogin = styled.div`
 height: 40.5vh;
@@ -60,78 +60,73 @@ const initialLoginFormValues = {
 };
 
 export default function Login(props) {
+    const { push } = useHistory();
     //use userLogin function to change global user id state
-    const { userLogin } = props;
+    const { userLogin, login} = props;
 
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     
-    const updateLoginForm = (inputName, inputValue) => {
-        setLoginFormValues({ ...loginFormValues, [inputName]: inputValue});
-    };
-    const onChange = evt => {
-        const { name, value, type, checked } = evt.target;
-        const valueToUse = type === 'checkbox' ? checked : value
-        updateLoginForm(name, valueToUse);
-    };
-    //Authorization post and form submission
-    const history = useHistory();
-    
-    const loginFail = document.getElementById('error');
-    const loginUser = userKey => {
-    axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register/', userKey )
-    .then(res => {
-        console.log(res.data);
-        userLogin();
-        history.push('/account');
-    })
-    .catch(err => {
-        console.log(err.stack);
-        setLoginFormValues(initialLoginFormValues)
-        loginFail.classList.add('show');
-    })
-    };
-    const submitLoginForm = () => {
-    const userKey = {
-        username: loginFormValues.username,
-        password: loginFormValues.password,
-    };
-    // console.log(newUser);
-    loginUser(userKey);
-    };
+    const handleChange = evt => {
+      const { name, value } = evt.target;
 
-    const onSubmit = evt => {
+      setLoginFormValues({ ...loginFormValues, [name]:value })
+    }
+
+    //placeholder for authorization
+    const handleSubmit = evt => {
         evt.preventDefault();
-        submitLoginForm();
+
+        console.log(loginFormValues);
+
+        axios
+          .post('https://african-marketplace-5.herokuapp.com/api/auth/login', loginFormValues)
+          .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.token)
+            login()
+            push('/account')
+            
+          })
+          .catch(err => {
+            console.log(err)
+          })
     };
 
     return (
         <>
             <StyledLogin>
-                <form className='form-container' onSubmit={onSubmit}>
+                <form className='form-container' onSubmit={handleSubmit}>
+
                     <h2>Login:</h2>
+
                     <div className='form-inputs'>
                         <label htmlFor='username'>First name: 
                             <input 
-                            id='username'
-                            type='text'
-                            name='username'
-                            onChange={onChange}
-                            value={loginFormValues.username}/>
+                              id='username'
+                              type='text'
+                              name='username'
+                              onChange={handleChange}
+                              value={loginFormValues.username}
+                            />
                         </label>
+
                         <label htmlFor='password'> Password: 
                             <input 
-                            id='password'
-                            type='password'
-                            name='password'
-                            onChange={onChange}
-                            value={loginFormValues.password}/>
+                              id='password'
+                              type='password'
+                              name='password'
+                              onChange={handleChange}
+                              value={loginFormValues.password}
+                            />
                         </label>
+
                     </div>
+
                     <div className='submit'>
-                    <button>Submit</button>
+                      <button>Submit</button>
                     </div>
-                    <div className='error'>Username or password is incorrect.</div>
-                </form> 
+
+                </form>  
             </StyledLogin>
         </>
     );

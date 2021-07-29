@@ -1,15 +1,19 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
-import Header from './components/Header';
-import Home from './components/Home';
-import Signup from './components/userportal/signup';
+import Header from './components/Header'
+import Home from './components/Home'
+import BrowsePage from './components/BrowsePage'
+import Signup from './components/userportal/Signup';
 import Login from './components/userportal/login';
 
-const initialUserId = null;
-
 function App() {
-  const [ userId, setUserId ] = useState(initialUserId);
+  const [ userId, setUserId ] = useState("guest");
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const login = () => {
+    setLoggedIn(true);
+  }
 
   const userLogin = (id) => {
     setUserId(id)
@@ -17,20 +21,28 @@ function App() {
   
   return (
     <>
-      <Header />
+      <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
 
       <Switch>
       
         <Route exact path="/">
           <Home />
         </Route>
+
         <Route path='/signup' component={Signup}>
           <Signup/>
         </Route>
+
         <Route path='/login' component={Login}>
-          <Login userLogin={userLogin}/>
+          <Login login={login} userLogin={userLogin}/>
         </Route>
-      </Switch>
+
+      {/*Romy's browse page */}
+      <Route exact path='/browse'>
+        <BrowsePage />
+      </Route>
+
+    </Switch>
     </>
   );
 };

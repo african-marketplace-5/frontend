@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
 
-function Header() {
+const Header = props => {
+  const { loggedIn, setLoggedIn } = props;
+  const { push }  = useHistory();
+
+  const checkUserStatus = () => {
+    if(localStorage.getItem("token")) {
+      return([<Link key="account" to="/account">Account</Link>,<Link key="logout" onClick={() => handleLogout()}>Logout</Link>])
+    }
+    else {
+      return([<Link key="login" to="/login">Login</Link>,<Link key="signup" to='/signup'>Signup</Link>])
+  }}
+
+  useEffect(() => {
+    checkUserStatus()
+  }, [loggedIn])
+
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    setLoggedIn(false)
+    push("/");
+  }
+
+
   return (
     <>
       <StyledHeader>
@@ -12,6 +34,8 @@ function Header() {
           <Link to='/account'>Account</Link>
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Join</Link>
+          <Link to='/browse'>Browse</Link>
+          {checkUserStatus()}
         </StyledNav>
         
       </StyledHeader>
