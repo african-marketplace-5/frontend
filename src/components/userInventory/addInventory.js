@@ -9,8 +9,10 @@ const initialFormValues = {
 }
 
 const addItem = (props) => {
-    const {itemId, userId} = props
-    const [items, setItem] = useState
+    //const {userId} = props
+    //use route match to get itemId
+    const itemId = 1
+    const userId = 1
     const [formValues, setFormValues] = useState(initialFormValues)
     const updateForm = (inputItem, inputValue) => {
         setFormValues({ ...formValues, [inputItem]: inputValue})
@@ -28,17 +30,13 @@ const addItem = (props) => {
             axios
                 .post('https://african-marketplace-5.herokuapp.com/api/user_items/', newItem)
                 .then(res => {
-                    const itemFromBackend = res.data
-                    setItem([itemFromBackend, ...items])
-                    setFormValues(initialFormValues)
+                 console.log(res)   
                 })
                 .catch(err => console.log(err.message))
         }
         
     }
-    useEffect(() => {
-        axios.get('https://african-marketplace-5.herokuapp.com/api/user_items/').then(res => setItem(res.data))
-    },[])
+    
     return (
         <div className = 'addItem'>
             <h1>Add Item</h1>
@@ -47,14 +45,6 @@ const addItem = (props) => {
             update = {updateForm}
             submit = {submitForm}
             />
-
-            {
-                items.map(item => {
-                    return(
-                        <Item key = {item.id} details = {item} />
-                    )
-                })
-            }
         </div>
     )
 }

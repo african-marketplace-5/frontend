@@ -70,7 +70,7 @@ const initialLocation= [];
 const initialUserFormValues = {
     username: '',
     password: '',
-    location_id: '',
+    location_id: null,
     tos: false,
 };
 const initialUserFormErrors = {
@@ -103,26 +103,25 @@ export default function Signup() {
         // Submit new user information and post new user to API, USED TEST API
             const history = useHistory();
             const postNewUser = newUser => {
-            axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register', newUser)
+            axios.post('https://african-marketplace-5.herokuapp.com/api/auth/register/', newUser)
             //Used a push to history instead of a route 
             .then(res => {
                 console.log(res.data);
+                setUserFormValues(initialUserFormValues)
                 history.push('/login');
             })
             .catch(err => {
-                console.log(err);
-            })
-            .finally(() => {
-                setUserFormValues(initialUserFormValues)
+                console.log(err.stack);
             })
         };
 
         const submitUserForm = () => {
             const newUser = {
-                username: userFormValues.username.trim(),
-                password: userFormValues.password.trim(),
-                location_id: userFormValues.location_id.trim(),
+                username: userFormValues.username,
+                password: userFormValues.password,
+                location_id: userFormValues.location_id,
             };
+            // console.log(newUser);
             postNewUser(newUser);
         };
         // Signup form errors and validation
@@ -184,15 +183,15 @@ export default function Signup() {
                         </label>
                         <label htmlFor='size'>Location:
                     <select id='location-dropdown' name='location_id' onChange={onChange} value={userFormValues.location_id}>
-                    <option value=''>--</option>
+                    <option value={null}>--</option>
                     {location.map(elem => {
                         return(
-                            <option key={elem.location_name} value={elem.location_name}>{elem.location_name}</option>
+                            <option key={elem.location_id} value={elem.location_id}>{elem.location_name}</option>
                         )  
                     })}
                     </select>
                     </label>
-                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>:
+                        <label htmlFor='tos'> By checking here, I accept <a href='#'>African Marketplace's Terms of Service</a>: {/* eslint-disable-line */}
                                 <input 
                                 id='tos'
                                 type='checkbox'

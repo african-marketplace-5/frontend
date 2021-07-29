@@ -13,31 +13,8 @@ const itemForm = (props) => {
     return(
         <form className = 'from container' onSubmit = {onSubmit}>
             <div className = 'form-group inputs'>
-                <label htmlFor = 'item_name'>Item Name
-                    <input 
-                        id = 'item_name'
-                        type = 'text'
-                        name = 'item_name'
-                        onChange = {onChange}
-                        value = {values.item_name}
-                    />
-                </label>
-                <label htmlFor = 'category'>Category
-                    <select id = 'category' name = 'category' onChange = {onChange} value = {values.category_id}>
-                        <option value = ''>--Select Category--</option>
-                        <option value = 'animal_products'>Animal Products</option>
-                        <option value = 'beans'>Beans</option>
-                        <option value = 'cereals_maize'>Cereals Maize</option>
-                        <option value = 'cereals_Other'>Cereals Other</option>
-                        <option value = 'cereals_rice'>Cereals Rice</option>
-                        <option value = 'fruits'>Fruits</option>
-                        <option value = 'peas'>Peas</option>
-                        <option value = 'roots_and_tubers'>Roots and Tubers</option>
-                        <option value = 'seeds_and_nuts'>Seeds and Nuts</option>
-                        <option value = 'vegetables'>Vegetables</option>
-                        <option value = 'other'>Other</option>
-                    </select>
-                </label>
+                
+                
                 <label htmlFor = 'price'>Price
                     <input
                         id = 'price'
