@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Browse (props) {
     const { selected } = props
@@ -28,12 +29,14 @@ function Browse (props) {
             <div className='items-list'>
                 {selected.map(item => {
                     const { item_name, category, item_id, sellers, prices } = item
+                    const linkAdd = `/add-user-item/${item_id}`
                     return (
                         <div className='item-card' key={item_id}>
                             <h2>{item_name}</h2>
                             <h3>{category}</h3>
                             {priceRange(prices)}
                             <p>Sellers: {sellers}</p>
+                            <Link to={linkAdd}><button>Add this item</button></Link>
                         </div>
                 )})}
             </div>
