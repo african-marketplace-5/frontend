@@ -6,9 +6,9 @@ function Home() {
     <>
       <HomeComponent>
 
-        <Hero><h1>MarketPlace</h1></Hero>
+      <Hero><h1>MarketPlace</h1></Hero>
 
-        {/* <Title>Quick View</Title> */}
+      {/* <Title>Quick View</Title> */}
 
       </HomeComponent>
     </>

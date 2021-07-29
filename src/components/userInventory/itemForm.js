@@ -1,46 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
+import styled from "styled-components"
+import axiosWithAuth from '../../utils/axiosWithAuth.js'
 
-const itemForm = (props) => {
-    const { values, update, submit } = props
-    const onChange = evt => {
-        const {item, value} = evt.target
-        update(item, value)
-    }
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
-    }
+const initialFormValues  = {
+  price: '',
+  description: ''
+}
+
+const ItemForm = props => {
+  const [formValues, setFormValues] = useState(initialFormValues)
+  
+  const handleChange = evt => {
+      const { name, value } = evt.target
+      setFormValues({ ...formValues, [name]: value })
+}
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+
+    console.log(formValues)
+
+    axiosWithAuth()
+        .post('/items', formValues)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
     return(
-        <form className = 'from container' onSubmit = {onSubmit}>
-            <div className = 'form-group inputs'>
-                
-                
-                <label htmlFor = 'price'>Price
-                    <input
-                        id = 'price'
-                        type = 'float'
-                        name = 'price'
-                        onChange = {onChange}
-                        value = {values.price}
-                    />
-                </label>
-                <label htmlFor = 'user_item_description'>User Item Description
-                    <input
-                        id = 'user_item_description'
-                        type = 'text'
-                        name = 'user_item_description'
-                        onChange = {onChange}
-                        value = {values.user_item_description}
-                    />
-                </label>
-                <div className = 'submit'>
-                    <button>submit</button>
+        <>
+            <Title>Post Item Listing</Title>
+            <StyledForm className = 'from container' onSubmit = {handleSubmit}>
+                <div className = 'form-group inputs'>
+
+                    <label htmlFor = 'item-description'>Item
+                            <input
+                                name='description'
+                                type='text'
+                                onChange={handleChange}
+                                value={formValues.description}
+                            />
+                        </label>
+                        
+                    <label htmlFor = 'price'>Price
+                        <input
+                            name='price'
+                            type='number'
+                            onChange={handleChange}
+                            value={formValues.price}
+                        />
+                    </label>
+
+                    <div className = 'submit'>
+                        <button>Submit</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </StyledForm>
+        </>
     )
 }
 
 
+const StyledForm = styled.form`
+border: solid black 3px;
+border-radius: 10px;
+padding: 10px;
+width: 50%;
+margin: auto;
+margin-top: 50px;
+display: flex;
+justify-content: center;
 
-export default itemForm
+input {
+    margin-left: 9px;
+}
+
+.submit {
+    text-align: center;
+    margin-top: 50px;
+}
+`
+const Title = styled.h2`
+padding: 25px;
+color: white;
+background-color: #e89910;
+text-align: center;
+font-family: 'Roboto', sans-serif;
+`
+
+
+export default ItemForm
