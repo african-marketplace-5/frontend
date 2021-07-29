@@ -5,8 +5,8 @@ import { Route, Switch } from "react-router-dom";
 import Header from './components/Header'
 import Home from './components/Home'
 import BrowsePage from './components/BrowsePage'
-import Signup from './components/userportal/Signup';
-import Login from './components/userportal/Login';
+import Signup from './components/userportal/signup';
+import Login from './components/userportal/login';
 
 function App() {
   const [ userId, setUserId ] = useState("guest");
