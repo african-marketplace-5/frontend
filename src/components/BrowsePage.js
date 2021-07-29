@@ -12,8 +12,9 @@ function BrowsePage() {
 // Temporary items list
   useEffect(() =>{
     axios.get('https://african-marketplace-5.herokuapp.com/api/items/')
-      .then(res => {setItems(res.data);
-        console.log(res.data)})
+      .then(res => {
+        setItems(res.data);
+      })
       .catch(err => console.log(err))
   }, [])
 
@@ -33,7 +34,7 @@ function BrowsePage() {
   useEffect(() => {
     const {category, item_name } = search
     selection(category, item_name)
-  }, [search])
+  }, [search]) // eslint-disable-line
 
   return (
     <div className="browse">
