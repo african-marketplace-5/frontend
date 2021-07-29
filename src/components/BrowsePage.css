@@ -11,6 +11,22 @@
   justify-content: space-between;
 }
 
+.list-container{
+  background-image: url('../pics/david-clode-z9CgKNW_Nq8-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.photoBy p{
+  color: lightgreen;
+  background: black;
+}
+
+.photoBy p a{
+  color: lightblue;
+}
+
 .items-list {
   display: flex;
   flex-wrap: wrap;
