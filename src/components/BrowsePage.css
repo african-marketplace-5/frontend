@@ -11,6 +11,25 @@
   justify-content: space-between;
 }
 
+.list-container{
+  background-image: url('../pics/david-clode-z9CgKNW_Nq8-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.photoBy p{
+  color: lightgreen;
+  background: black;
+  text-align: center;
+  padding: 1%;
+  margin-left: 70%;
+}
+
+.photoBy p a{
+  color: lightblue;
+}
+
 .items-list {
   display: flex;
   flex-wrap: wrap;
@@ -66,6 +85,10 @@ h3{
     width: 60%;
     margin: 0 19.5%;
   }
+
+  .photoBy p{
+    margin-left: 60%;
+  }
 }
 
 @media (max-width: 600px){
@@ -76,5 +99,9 @@ h3{
   .search-bar{
     width: 90%;
     margin: 0 4.5%;
+  }
+
+  .photoBy p{
+    margin-left: 50%;
   }
 }

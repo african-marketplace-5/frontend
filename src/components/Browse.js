@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Browse (props) {
     const { selected } = props
@@ -24,17 +25,24 @@ function Browse (props) {
     }
 
     return (
-        <div className='items-list'>
-            {selected.map(item => {
-                const { item_name, category, item_id, sellers, prices } = item
-                return (
-                    <div className='item-card' key={item_id}>
-                        <h2>{item_name}</h2>
-                        <h3>{category}</h3>
-                        {priceRange(prices)}
-                        <p>Sellers: {sellers}</p>
-                    </div>
-            )})}
+        <div className='list-container'>
+            <div className='items-list'>
+                {selected.map(item => {
+                    const { item_name, category, item_id, sellers, prices } = item
+                    const linkAdd = `/add-user-item/${item_id}`
+                    return (
+                        <div className='item-card' key={item_id}>
+                            <h2>{item_name}</h2>
+                            <h3>{category}</h3>
+                            {priceRange(prices)}
+                            <p>Sellers: {sellers}</p>
+                            <Link to={linkAdd}><button>Add this item</button></Link>
+                        </div>
+                )})}
+            </div>
+            <div className='photoBy'>
+                <p>Photo by <a href="https://unsplash.com/@davidclode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">David Clode</a> on <a href="https://unsplash.com/s/photos/africa-plains?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+            </div>
         </div>
     )
 }
