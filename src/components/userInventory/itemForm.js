@@ -33,9 +33,9 @@ const ItemForm = props => {
 }
     return(
         <>
-            <h1>THIS CODE IS FOR TESTING AND SHOULD BE DELETED</h1>
+            {/*The next line is for testing and should be deleted */}
             <DeleteMe />
-            
+
             <Title>Post Item Listing</Title>
             <StyledForm className = 'from container' onSubmit = {handleSubmit}>
                 <div className = 'form-group inputs'>

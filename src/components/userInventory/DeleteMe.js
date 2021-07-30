@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useRouteMatch } from 'react-router-dom'
 import EditForm from './editForm'
 import axios from 'axios'
 
@@ -10,7 +9,6 @@ function DeleteMe (props){
 
     const user_id = 1
     const callLink = `https://african-marketplace-5.herokuapp.com/api/user_items/filter/${user_id}`
-    const { url, path } = useRouteMatch()
 
     useEffect(() => {
         axios.get(callLink)

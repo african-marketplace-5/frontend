@@ -17,7 +17,7 @@ const EditForm = props => {
         axios.get('https://african-marketplace-5.herokuapp.com/api/items')
             .then(res => setItemList(res.data))
             .catch(err => console.log(err))
-    })
+    }, [])
 
     if (!item){
         return (
@@ -66,7 +66,7 @@ const EditForm = props => {
             <Title>Edit Item Listing</Title>
             <StyledForm className = 'form-container' onSubmit = {handleSubmit}>
                 <div className = 'form-group inputs'>
-
+                    <p>{item_name}</p>
                     <label htmlFor = 'item-description'>Description
                             <input
                                 name='user_item_description'
