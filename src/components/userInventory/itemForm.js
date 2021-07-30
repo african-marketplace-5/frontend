@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 import axiosWithAuth from '../../utils/axiosWithAuth.js'
+//This import is for testing and should be deleted
+import DeleteMe from './DeleteMe'
 
 const initialFormValues  = {
   price: '',
@@ -31,6 +33,9 @@ const ItemForm = props => {
 }
     return(
         <>
+            <h1>THIS CODE IS FOR TESTING AND SHOULD BE DELETED</h1>
+            <DeleteMe />
+            
             <Title>Post Item Listing</Title>
             <StyledForm className = 'from container' onSubmit = {handleSubmit}>
                 <div className = 'form-group inputs'>
