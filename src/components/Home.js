@@ -10,6 +10,10 @@ function Home() {
 
       {/* <Title>Quick View</Title> */}
 
+      <StyledAbout>
+      <p>This Marketplace empowers small business owners, particularly women, to improve their business and economic opportunities to grow out of poverty. </p>
+      </StyledAbout>
+
       </HomeComponent>
     </>
   )
@@ -54,6 +58,15 @@ h1 {
   font-family: 'Pacifico', cursive;
 }
 `
-
+const StyledAbout = styled.div`
+padding: 30px;
+text-align: center;
+color: white;
+background-color: #e89910;
+p {
+  font-size: 20px;
+  font-weight: bold;
+}
+`
 
 export default Home;
