@@ -33,9 +33,6 @@ const ItemForm = props => {
 }
     return(
         <>
-            {/*The next line is for testing and should be deleted */}
-            <DeleteMe />
-
             <Title>Post Item Listing</Title>
             <StyledForm className = 'from container' onSubmit = {handleSubmit}>
                 <div className = 'form-group inputs'>
