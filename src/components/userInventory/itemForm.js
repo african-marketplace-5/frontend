@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
 import axiosWithAuth from '../../utils/axiosWithAuth.js'
+//This import is for testing and should be deleted
+import DeleteMe from './DeleteMe'
 
 const initialFormValues  = {
   price: '',
