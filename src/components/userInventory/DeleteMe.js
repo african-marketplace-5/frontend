@@ -21,7 +21,7 @@ function DeleteMe (props){
     console.log(itemList)
 
     return (
-        <EditForm item={itemList[0]} user_id={user_id} />
+        <EditForm item={itemList[5]} user_id={user_id} />
     )
 }
 

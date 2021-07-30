@@ -25,16 +25,10 @@ const EditForm = props => {
         )
     }
 
-    const { user_item_id, item_name, user_item_description, user_item_price } = item
+    const { user_item_id, item_name } = item
 
-    const initialFormValues  = {
-        user_item_price: user_item_price,
-        user_item_description: user_item_description
-    }
-
-  const deleteLink = `https://african-marketplace-5.herokuapp.com/api/user_items/?user_item_id=${user_item_id}`
+  const deleteLink = `https://african-marketplace-5.herokuapp.com/api/user_items/${user_item_id}`
   const postLink = `https://african-marketplace-5.herokuapp.com/api/user_items/`
-  const checkLink = `https://african-marketplace-5.herokuapp.com/api/user_items/filter/${user_id}`
   
   const handleChange = evt => {
       const { name, value } = evt.target
@@ -43,15 +37,16 @@ const EditForm = props => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-
+        
         const editedItem = {
             item_id: '',
             user_item_description: formValues.user_item_description,
-            use_item_price: formValues.user_item_price,
+            user_item_price: formValues.user_item_price,
             user_id: user_id
         }
 
-        const idObject = itemList.find(item => item.item_name = item_name)
+        const idObject = itemList.find(item => item.item_name === item_name)
+        console.log(idObject)
         editedItem.item_id = idObject.item_id
 
         // The .thens may require editing
@@ -63,9 +58,7 @@ const EditForm = props => {
             .then(res => console.log(res))
             .catch(err => console.log(err.response.data))
 
-        axios.get(checkLink)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+        
     }
 
     return(
