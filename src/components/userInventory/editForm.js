@@ -8,16 +8,9 @@ import axios from 'axios'
 const EditForm = props => {
 
     //This will requires some editing when the component is implemented
-    const { item, user_id } = props
+    const { item } = props
 
     const [formValues, setFormValues] = useState({user_item_price: '', user_item_description: ''})
-    const [itemList, setItemList] = useState([])
-
-    useEffect(() => {
-        axios.get('https://african-marketplace-5.herokuapp.com/api/items')
-            .then(res => setItemList(res.data))
-            .catch(err => console.log(err))
-    }, [])
 
     if (!item){
         return (
@@ -27,8 +20,7 @@ const EditForm = props => {
 
     const { user_item_id, item_name } = item
 
-  const deleteLink = `https://african-marketplace-5.herokuapp.com/api/user_items/${user_item_id}`
-  const postLink = `https://african-marketplace-5.herokuapp.com/api/user_items/`
+  const putLink = `https://african-marketplace-5.herokuapp.com/api/user_items/${user_item_id}`
   
   const handleChange = evt => {
       const { name, value } = evt.target
@@ -37,28 +29,14 @@ const EditForm = props => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-        
-        const editedItem = {
-            item_id: '',
-            user_item_description: formValues.user_item_description,
-            user_item_price: formValues.user_item_price,
-            user_id: user_id
-        }
-
-        const idObject = itemList.find(item => item.item_name === item_name)
-        console.log(idObject)
-        editedItem.item_id = idObject.item_id
 
         // The .thens may require editing
-        axios.delete(deleteLink)
+        axios.put(putLink, {
+                user_item_price: formValues.user_item_price,
+                user_item_description: formValues.user_item_description
+            })
             .then(res => console.log(res))
-            .catch(err => console.log(err))
-
-        axios.post(postLink, editedItem)
-            .then(res => console.log(res))
-            .catch(err => console.log(err.response.data))
-
-        
+            .catch(err => console.log(err))        
     }
 
     return(
