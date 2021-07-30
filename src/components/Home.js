@@ -15,13 +15,13 @@ function Home() {
   )
 }
 
-const Title = styled.h2`
-padding: 25px;
-color: white;
-background-color: #e89910;
-text-align: center;
-font-family: 'Roboto', sans-serif;
-`
+// const Title = styled.h2`
+// padding: 25px;
+// color: white;
+// background-color: #e89910;
+// text-align: center;
+// font-family: 'Roboto', sans-serif;
+// `
 
 const HomeComponent = styled.div`
 // border: solid red 4px;
