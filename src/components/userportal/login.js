@@ -62,7 +62,7 @@ const initialLoginFormValues = {
 export default function Login(props) {
     const { push } = useHistory();
     //use userLogin function to change global user id state
-    const { userLogin, login} = props; // eslint-disable-line
+    const { login } = props; // eslint-disable-line
 
     const [ loginFormValues, setLoginFormValues ] = useState(initialLoginFormValues);
     

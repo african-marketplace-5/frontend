@@ -10,16 +10,11 @@ import Login from './components/userportal/login';
 import ItemForm from "./components/userInventory/itemForm.js"
 
 function App() {
-  const [ userId, setUserId ] = useState("guest");
   const [loggedIn, setLoggedIn] = useState(false);
 
   const login = () => {
     setLoggedIn(true);
   }
-
-  const userLogin = (id) => {
-    setUserId(id)
-  };
   
   return (
     <>
@@ -30,8 +25,8 @@ function App() {
           <Signup/>
         </Route>
 
-        <Route path='/login' component={Login}>
-          <Login login={login} userLogin={userLogin}/>
+        <Route path='/login'>
+          <Login login={login}/>
         </Route>
 
         {/*Romy's browse page */}
